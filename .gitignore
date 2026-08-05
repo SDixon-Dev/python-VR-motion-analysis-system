@@ -216,3 +216,16 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project-generated user recordings
+/data/*.csv
+
+# Keep the empty data directory in Git
+!/data/.gitkeep
+
+# Local OpenVR hardware configuration
+/config/config.json
+
+# Operating-system files
+.DS_Store
+Thumbs.db
