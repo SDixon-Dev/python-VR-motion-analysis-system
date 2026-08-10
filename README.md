@@ -1,6 +1,6 @@
 # VR Motion Analysis System (Python)
 
-A Python virtual reality prototype that captures and analyses fencing
+A Python virtual reality prototype that captures and analyses weapons-based sports
 movements using **HTC Vive controllers** and **OpenVR**.
 
 The project was developed as part of a final-year Computer Science
