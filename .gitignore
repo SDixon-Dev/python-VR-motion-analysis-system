@@ -217,14 +217,21 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# Project-generated user recordings
+# --------------------------------------------------
+# Project-specific files
+# --------------------------------------------------
+
+# Generated user motion recordings
 /data/*.csv
 
-# Keep the empty data directory in Git
+# Keep the empty generated-data directory
 !/data/.gitkeep
 
-# Local OpenVR hardware configuration
+# Local hardware configuration containing device details
 /config/config.json
+
+# Visual Studio Code workspace settings
+.vscode/
 
 # Operating-system files
 .DS_Store

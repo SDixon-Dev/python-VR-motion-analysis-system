@@ -1,4 +1,12 @@
 import csv
+from pathlib import Path
+
+# Locate the root folder of the repository.
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+# Define the files used by this standalone comparison program.
+USER_DATA_PATH = PROJECT_ROOT / "data" / "UserData.csv"
+PRO_DATA_PATH = PROJECT_ROOT / "sample_data" / "ProData.csv"
 
 def calculate_file_score(test_file, target_file):
     column_distances = []
@@ -32,9 +40,27 @@ def calculate_file_score(test_file, target_file):
     return column_names, average_distances
 
 # Example usage:
-test_file = "UserData.csv"
-target_file = "ProData.csv"
-column_names, average_distances = calculate_file_score(test_file, target_file)
-print("Average Distance for Each Column:")
-for name, distance in zip(column_names, average_distances):
-    print(f"{name}: {distance:.2f}")
+if __name__ == "__main__":
+    if not USER_DATA_PATH.exists():
+        raise FileNotFoundError(
+            "No generated user recording was found at:\n"
+            f"{USER_DATA_PATH}\n\n"
+            "Run 5_UserDataAnalysis.py or "
+            "6_ArtefactFinalVersion.py first."
+        )
+
+    if not PRO_DATA_PATH.exists():
+        raise FileNotFoundError(
+            "No expert reference recording was found at:\n"
+            f"{PRO_DATA_PATH}"
+        )
+
+    column_names, average_distances = calculate_file_score(
+        USER_DATA_PATH,
+        PRO_DATA_PATH
+    )
+
+    print("Average Distance for Each Column:")
+
+    for name, distance in zip(column_names, average_distances):
+        print(f"{name}: {distance:.2f}")

@@ -1,6 +1,15 @@
-import triad_openvr
-import time
+from pathlib import Path
 import sys
+import time
+
+# Locate the repository's src folder.
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+SRC_DIR = PROJECT_ROOT / "src"
+
+# Allow this test utility to import triad_openvr from src.
+sys.path.insert(0, str(SRC_DIR))
+
+import triad_openvr
 
 v = triad_openvr.triad_openvr()
 v.print_discovered_objects()

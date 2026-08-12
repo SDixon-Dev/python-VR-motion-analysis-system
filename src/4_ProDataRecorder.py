@@ -3,8 +3,16 @@ import triad_openvr  # for accessing VR controller data
 import time  # for time-related functions
 import sys  # for system-related functions
 import pandas as pd  # pandas library for data manipulation
+from pathlib import Path
 
 def record_pose_data(file_path, interval, move_length):
+
+    # Convert the supplied output location into a Path object.
+    file_path = Path(file_path)
+    
+    # Create the output folder if it does not already exist.
+    file_path.parent.mkdir(parents=True, exist_ok=True)
+
     # Create a triad_openvr object to interact with VR devices
     v = triad_openvr.triad_openvr()
     # Prints discovered objects, such as VR controllers
